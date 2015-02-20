@@ -1,5 +1,7 @@
 package com.example.recipe;
 
-public class PayActivity {
+import android.app.Activity;
+
+public class PayActivity extends Activity{
 
 }
