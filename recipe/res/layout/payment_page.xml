@@ -1,0 +1,106 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:src="@drawable/recipe_detail_food_img1"/>
+
+    <TableLayout
+        android:id="@+id/tbl_test"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:orientation="vertical"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:stretchColumns="1"
+        >
+
+        <TableRow
+            android:background="#ffffff"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="1dp">
+
+            <TextView android:text="1." android:layout_column="0" />
+            <TextView android:text="감자" android:layout_column="1" />
+            <EditText
+                android:hint="1"/>
+            <Button android:text="-"/>
+            <Button android:text="+" />
+
+        </TableRow>
+
+        <TableRow
+            android:background="#ffffff"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="1dp"
+            android:paddingRight="2dp">
+
+            <TextView android:text="2." android:layout_column="0" />
+            <TextView android:text="양배추" android:layout_column="1" />
+            <EditText
+                android:hint="1"/>
+            <Button android:text="-" />
+            <Button android:text="+" />
+
+        </TableRow>
+
+        <TableRow
+            android:background="#ffffff"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="1dp"
+            android:paddingRight="3dp">
+
+            <TextView android:text="3." android:layout_column="0" />
+            <TextView android:text="당근" android:layout_column="1" />
+            <EditText
+                android:hint="1"/>
+            <Button android:text="-" />
+            <Button android:text="+" />
+
+        </TableRow>
+
+        <TableRow
+            android:background="#ffffff"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="1dp"
+            android:paddingRight="4dp">
+
+            <TextView android:text="4." android:layout_column="0" />
+            <TextView android:text="고기" android:layout_column="1" />
+            <EditText
+                android:hint="1"/>
+            <Button android:text="-"/>
+            <Button android:text="+" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:text="다른메뉴 추가하기 " />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:text="결제하기" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:text="결제하기" />
+
+
+</LinearLayout>
