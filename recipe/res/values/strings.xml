@@ -9,10 +9,28 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
-
     <string name="my_page">MyPage</string>
     <string name="category1">Meal</string>
     <string name="category2">Dessert</string>
     <string name="category3">Beverage</string>
-    
+    <string name="payment_page_image">payment_page_image</string>
+    <string name="payment_page_total_cost_temp">45000</string>
+    <string name="payment_page_total_text1">총 금액&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="payment_page_total_text2">&#160;원</string>
+    <string name="payment_page_add_other_ingredient_button">다른 재료 추가하기</string>
+    <string name="payment_page_payButton">결제하기</string>
+    <string name="ingredient_meat_name">고기</string>
+    <string name="ingredient_meat_cost">25000원</string>
+    <string name="ingredient_potato_name">감자</string>
+    <string name="ingredient_potato_cost">4000원</string>
+    <string name="ingredient_carrot_name">당근</string>
+    <string name="ingredient_carrot_cost">3000원</string>
+    <string name="ingredient_asparagus_name">아스파라거스</string>
+    <string name="ingredient_asparagus_cost">2000원</string>
+    <string name="ingredient_salt_name">소금</string>
+    <string name="ingredient_salt_cost">1000원</string>
+    <string name="text_plus">+</string>
+    <string name="text_minus">-</string>
+    <string name="text_number_one">1</string>
+
 </resources>
