@@ -9,10 +9,12 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    
     <string name="my_page">MyPage</string>
     <string name="category1">Meal</string>
     <string name="category2">Dessert</string>
     <string name="category3">Beverage</string>
+    
     <string name="payment_page_image">payment_page_image</string>
     <string name="payment_page_total_cost_temp">45000</string>
     <string name="payment_page_total_text1">총 금액&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>

@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements
-		NavigationDrawerFragment.NavigationDrawerCallbacks {
+NavigationDrawerFragment.NavigationDrawerCallbacks {
 
 	/**
 	 * Fragment managing the behaviors, interactions and presentation of the
@@ -42,8 +42,7 @@ public class MainActivity extends ActionBarActivity implements
 		mTitle = getTitle();
 
 		// Set up the drawer.
-		mNavigationDrawerFragment.setUp(R.id.navigation_drawer,
-				(DrawerLayout) findViewById(R.id.drawer_layout));
+		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 	}
 
 	@Override
@@ -51,9 +50,9 @@ public class MainActivity extends ActionBarActivity implements
 		// update the main content by replacing fragments
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager
-				.beginTransaction()
-				.replace(R.id.container,
-						PlaceholderFragment.newInstance(position + 1)).commit();
+		.beginTransaction()
+		.replace(R.id.container,
+				PlaceholderFragment.newInstance(position + 1)).commit();
 	}
 
 	public void onSectionAttached(int number) {
@@ -106,7 +105,7 @@ public class MainActivity extends ActionBarActivity implements
 	 * A placeholder fragment containing a simple view.
 	 */
 	public static class PlaceholderFragment extends Fragment implements
-			OnClickListener {
+	OnClickListener {
 
 		/**
 		 * The fragment argument representing the section number for this
@@ -117,13 +116,14 @@ public class MainActivity extends ActionBarActivity implements
 		// 추가 부분//
 		static int number;
 
-		ImageView foodImg;
-		TextView nickName;
+		TextView detailBtn;	//, aqBtn, postBtn;
+
+		ImageView foodImg, userImg;
+		TextView nickName, etcText;
 		ImageView direction;
 
-		TextView payment;
-
-		// ////////
+		TextView ingredient, payment;
+		////////////
 
 		/**
 		 * Returns a new instance of this fragment for the given section number.
@@ -153,39 +153,33 @@ public class MainActivity extends ActionBarActivity implements
 			// container, false);
 
 			// 변경 부분//
-			View rootView = inflater.inflate(R.layout.fragment_category,
-					container, false);
+			View rootView = inflater.inflate(R.layout.category_page, container, false);
+			
 			foodImg = (ImageView) rootView.findViewById(R.id.foodImg);
 			nickName = (TextView) rootView.findViewById(R.id.nickName);
+			
 			direction = (ImageView) rootView.findViewById(R.id.direction);
+			
 			payment = (TextView) rootView.findViewById(R.id.payment);
+			detailBtn = (TextView) rootView.findViewById(R.id.detailBtn);
 
 			if (number == 1) {
-				foodImg.setImageDrawable(getResources().getDrawable(
-						R.drawable.recipe_detail_food_img1));
-				direction.setImageDrawable(getResources().getDrawable(
-						R.drawable.recipe_detail_direction1));
+				foodImg.setImageDrawable(getResources().getDrawable(R.drawable.recipe_detail_food_img1));
+				direction.setImageDrawable(getResources().getDrawable(R.drawable.recipe_detail_direction1));
 			} else if (number == 2) {
-				foodImg.setImageDrawable(getResources().getDrawable(
-						R.drawable.recipe_detail_food_img2));
-				direction.setImageDrawable(getResources().getDrawable(
-						R.drawable.recipe_detail_direction2));
+				foodImg.setImageDrawable(getResources().getDrawable(R.drawable.recipe_detail_food_img2));
+				direction.setImageDrawable(getResources().getDrawable(R.drawable.recipe_detail_direction2));
 
 			} else if (number == 3) {
-
-				foodImg.setImageDrawable(getResources().getDrawable(
-						R.drawable.recipe_detail_food_img3));
-
-				direction.setImageDrawable(getResources().getDrawable(
-						R.drawable.recipe_detail_direction3));
-
+				foodImg.setImageDrawable(getResources().getDrawable(R.drawable.recipe_detail_food_img3));
+				direction.setImageDrawable(getResources().getDrawable(R.drawable.recipe_detail_direction3));
 			}
 
 			nickName.setText("page " + number);
 
 			payment.setOnClickListener(this);
-
-			// /////////
+			detailBtn.setOnClickListener(this);
+			/////////////
 
 			return rootView;
 
@@ -193,26 +187,33 @@ public class MainActivity extends ActionBarActivity implements
 
 		@Override
 		public void onAttach(Activity activity) {
-
 			super.onAttach(activity);
-
-			((MainActivity) activity).onSectionAttached(getArguments().getInt(
-					ARG_SECTION_NUMBER));
-
+			((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
 		}
 
 		@Override
 		public void onClick(View v) {
-
 			// TODO Auto-generated method stub
-
-			Intent intent = new Intent((MainActivity) getActivity(),
-					PayActivity.class);
-
-			((MainActivity) getActivity()).startActivity(intent);
-
+			
+			Intent intent = null;
+			
+			switch(v.getId()){
+				case R.id.payment: 
+					intent = new Intent((MainActivity) getActivity(),PayActivity.class);
+					break;
+				case R.id.detailBtn:
+					intent = new Intent((MainActivity) getActivity(),RecipeDetailActivity.class);
+					break;
+				default:	
+					intent = null;
+					break;
+			}
+			
+			if(intent != null){
+				((MainActivity) getActivity()).startActivity(intent);
+			}
+			
 		}
 
 	}
-
 }
