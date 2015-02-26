@@ -89,6 +89,7 @@
                         android:src="@drawable/upload_new_step" />
 
                     <ImageButton
+                        android:id="@+id/upload_button_register"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"

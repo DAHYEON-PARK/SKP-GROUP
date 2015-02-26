@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">recipe</string>
+    <string name="app_name">cheffy</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
@@ -15,24 +15,6 @@
     <string name="category2">카테고리 뭘로 하지?</string>
     <string name="category3">고민되네;;</string>
     
-    <string name="payment_page_image">payment_page_image</string>
-    <string name="payment_page_total_cost_temp">45000</string>
-    <string name="payment_page_total_text1">총 금액&#160;&#160;&#160;&#160;&#160;&#160;&#160;</string>
-    <string name="payment_page_total_text2">&#160;원</string>
-    <string name="payment_page_add_other_ingredient_button">다른 재료 추가하기</string>
-    <string name="payment_page_payButton">결제하기</string>
-    <string name="ingredient_meat_name">고기</string>
-    <string name="ingredient_meat_cost">25000원</string>
-    <string name="ingredient_potato_name">감자</string>
-    <string name="ingredient_potato_cost">4000원</string>
-    <string name="ingredient_carrot_name">당근</string>
-    <string name="ingredient_carrot_cost">3000원</string>
-    <string name="ingredient_asparagus_name">아스파라거스</string>
-    <string name="ingredient_asparagus_cost">2000원</string>
-    <string name="ingredient_salt_name">소금</string>
-    <string name="ingredient_salt_cost">1000원</string>
-    <string name="text_plus">+</string>
-    <string name="text_minus">-</string>
-    <string name="text_number_one">1</string>
-
+	<string name="order_contentDescription">order_contentDescription</string>
+    <string name="popup_contentDescription">popup_contentDescription</string>
 </resources>

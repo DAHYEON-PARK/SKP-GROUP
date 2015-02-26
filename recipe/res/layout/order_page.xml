@@ -1,27 +1,42 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ffffff"
-    android:orientation="vertical"
-    tools:context=".MainActivity" >
+    android:focusable="true"
+    android:focusableInTouchMode="true" 
+    android:background="#00000000">
 
-<!--  
     <ImageView
+        android:id="@+id/order_header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:src="@drawable/recipe_detail_food_img1" 
-        android:contentDescription="@string/payment_page_image"/>
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/order_contentDescription"
+        android:src="@drawable/order_header" />
+
+    <ImageButton
+        android:id="@+id/order_button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#00000000"
+        android:contentDescription="@string/order_contentDescription"
+        android:src="@drawable/order_button_back" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_below="@id/order_header" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/order_contentDescription"
+                android:src="@drawable/order_header_second" />
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -31,7 +46,7 @@
                 android:background="#ffffff"
                 android:orientation="vertical" >
 
-                 <TableRow
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="1dp"
@@ -39,51 +54,51 @@
                     android:layout_marginRight="1dp"
                     android:background="#ffffff" >
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="@string/ingredient_meat_name" />
-
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ingredient_meat" 
-                        android:contentDescription="@string/ingredient_meat_name"/>
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="center_vertical|end"
-                        android:hint="@string/text_number_one" />
+                        android:contentDescription="@string/order_contentDescription"
+                        android:src="@drawable/order_ingredient_bacon" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" >
-
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_plus" />
-
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_minus" />
-                    </LinearLayout>
-
-                    <TextView
+                    <ImageButton
+                        android:id="@+id/order_ingredient_bacon_minus"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|end"
-                        android:text="@string/ingredient_meat_cost" />
+                        android:background="#00000000"
+                        android:contentDescription="@string/order_contentDescription"
+                        android:src="@drawable/order_ingredient_bacon_minus" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:contentDescription="@string/order_contentDescription"
+                            android:src="@drawable/order_ingredient_bacon_blank" />
+
+                        <EditText
+                            android:id="@+id/order_ingredient_bacon_edittext"
+                            android:labelFor="@+id/order_ingredient_bacon_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:textSize="30sp" />
+                    </RelativeLayout>
+
+                    <ImageButton
+                        android:id="@+id/order_ingredient_bacon_plus"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#00000000"
+                        android:contentDescription="@string/order_contentDescription"
+                        android:src="@drawable/order_ingredient_bacon_plus" />
                 </TableRow>
 
                 <TableRow
@@ -94,51 +109,50 @@
                     android:layout_marginRight="1dp"
                     android:background="#ffffff" >
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="@string/ingredient_potato_name" />
-
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ingredient_potato" 
-                        android:contentDescription="@string/ingredient_potato_name"/>
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="center_vertical|end"
-                        android:hint="@string/text_number_one" />
+                        android:contentDescription="@string/order_contentDescription"
+                        android:src="@drawable/order_ingredient_egg" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" >
-
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_plus" />
-
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_minus" />
-                    </LinearLayout>
-
-                    <TextView
+                    <ImageButton
+                        android:id="@+id/order_ingredient_egg_minus"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|end"
-                        android:text="@string/ingredient_potato_cost" />
+                        android:background="#00000000"
+                        android:contentDescription="@string/order_contentDescription"
+                        android:src="@drawable/order_ingredient_egg_minus" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/order_contentDescription"
+                            android:src="@drawable/order_ingredient_egg_blank" />
+
+                        <EditText
+                            android:id="@+id/order_ingredient_egg_edittext"
+                            android:labelFor="@+id/order_ingredient_egg_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:textSize="30sp" />
+                    </RelativeLayout>
+
+                    <ImageButton
+                        android:id="@+id/order_ingredient_egg_plus"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#00000000"
+                        android:contentDescription="@string/order_contentDescription"
+                        android:src="@drawable/order_ingredient_egg_plus" />
                 </TableRow>
 
                 <TableRow
@@ -149,51 +163,50 @@
                     android:layout_marginRight="1dp"
                     android:background="#ffffff" >
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="@string/ingredient_carrot_name" />
-
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ingredient_carrot" 
-                        android:contentDescription="@string/ingredient_carrot_name"/>
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="center_vertical|end"
-                        android:hint="@string/text_number_one" />
+                        android:contentDescription="@string/order_contentDescription"
+                        android:src="@drawable/order_ingredient_pudding" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" >
-
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_plus" />
-
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_minus" />
-                    </LinearLayout>
-
-                    <TextView
+                    <ImageButton
+                        android:id="@+id/order_ingredient_pudding_minus"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical|end"
-                        android:text="@string/ingredient_carrot_cost" />
+                        android:background="#00000000"
+                        android:contentDescription="@string/order_contentDescription"
+                        android:src="@drawable/order_ingredient_pudding_minus" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/order_contentDescription"
+                            android:src="@drawable/order_ingredient_pudding_blank" />
+
+                        <EditText
+                            android:id="@+id/order_ingredient_pudding_edittext"
+                            android:labelFor="@+id/order_ingredient_pudding_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:textSize="30sp" />
+                    </RelativeLayout>
+
+                    <ImageButton
+                        android:id="@+id/order_ingredient_pudding_plus"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#00000000"
+                        android:contentDescription="@string/order_contentDescription"
+                        android:src="@drawable/order_ingredient_pudding_plus" />
                 </TableRow>
 
                 <TableRow
@@ -204,148 +217,81 @@
                     android:layout_marginRight="1dp"
                     android:background="#ffffff" >
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="@string/ingredient_asparagus_name" />
-
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ingredient_asparagus" 
-                        android:contentDescription="@string/ingredient_asparagus_name"/>
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:gravity="center_vertical|end"
-                        android:hint="@string/text_number_one" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" >
-
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_plus" />
-
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_minus" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical|end"
-                        android:text="@string/ingredient_asparagus_cost" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="1dp"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginRight="1dp"
-                    android:background="#ffffff" >
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="@string/ingredient_salt_name" />
+                        android:contentDescription="@string/order_contentDescription"
+                        android:src="@drawable/order_ingredient_vegetable" />
 
                     <ImageView
+                        android:id="@+id/order_ingredient_vegetable_minus"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/ingredient_salt"
-                        android:contentDescription="@string/ingredient_salt_name" />
+                        android:contentDescription="@string/order_contentDescription"
+                        android:src="@drawable/order_ingredient_vegetable_minus" />
 
-                    <EditText
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/order_contentDescription"
+                            android:src="@drawable/order_ingredient_vegetable_blank" />
+
+                        <EditText
+                            android:id="@+id/order_ingredient_vegetable_edittext"
+                            android:labelFor="@+id/order_ingredient_vegetable_edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:textSize="30sp" />
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/order_ingredient_vegetable_plus"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical|end"
-                        android:hint="@string/text_number_one" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" >
-
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_plus" />
-
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/text_minus" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical|end"
-                        android:text="@string/ingredient_salt_cost" />
+                        android:contentDescription="@string/order_contentDescription"
+                        android:src="@drawable/order_ingredient_vegetable_plus" />
                 </TableRow>
             </TableLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <ImageButton
+                android:id="@+id/order_button_add_other"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="end" >
+                android:background="#00000000"
+                android:contentDescription="@string/order_contentDescription"
+                android:src="@drawable/order_button_add_other" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/payment_page_total_text1" 
-                    android:gravity="center_vertical"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
 
-                <TextView
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="@string/payment_page_total_cost_temp"
-                    android:textColor="#FF0000"
-                    android:textSize="30sp" 
-                    android:gravity="center_vertical"/>
+                    android:layout_weight="1"
+                    android:contentDescription="@string/order_contentDescription"
+                    android:src="@drawable/order_text_won" />
 
-                <TextView
-                    android:layout_width="match_parent"
+                <ImageButton
+                    android:id="@+id/order_button_order"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="@string/payment_page_total_text2"
-                    android:textColor="#FF0000" 
-                    android:gravity="center_vertical"/>
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:contentDescription="@string/order_contentDescription"
+                    android:src="@drawable/order_button_ok_selector" />
             </LinearLayout>
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:text="@string/payment_page_add_other_ingredient_button" />
-
-            <Button
-                android:id="@+id/payButton"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:text="@string/payment_page_payButton" />
         </LinearLayout>
     </ScrollView>
--->
-</LinearLayout>
+
+</RelativeLayout>

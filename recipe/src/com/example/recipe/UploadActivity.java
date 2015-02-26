@@ -1,26 +1,14 @@
 package com.example.recipe;
 
 
-import android.annotation.SuppressLint;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver.OnScrollChangedListener;
-import android.view.Window;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.TranslateAnimation;
-import android.view.animation.Animation.AnimationListener;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -34,8 +22,9 @@ public class UploadActivity extends ActionBarActivity implements OnScrollChanged
 	ScrollView uploadScroll;
 	ImageButton uploadStepPhoto;
 	LinearLayout moveView;
-	
+	ImageButton upload_button_register;
 	ActionBar bar;
+	CustomDialog customDialog;
 	
 	boolean flag = false;
 	int prevScrollY;
@@ -86,6 +75,9 @@ public class UploadActivity extends ActionBarActivity implements OnScrollChanged
         
         uploadStepPhoto = (ImageButton) findViewById(R.id.uploadStepPhoto);
         uploadStepPhoto.setOnClickListener(this);
+        
+        upload_button_register = (ImageButton)findViewById(R.id.upload_button_register);
+        upload_button_register.setOnClickListener(this);
         
         moveView = (LinearLayout) findViewById(R.id.moveView);
 	}
@@ -199,14 +191,27 @@ public class UploadActivity extends ActionBarActivity implements OnScrollChanged
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
-		if(flag==false){
-			flag=true;
-			AlphaAnimation ani = new AlphaAnimation(0, 1);
-			ani.setDuration(500);
-			uploadStepPhoto.setImageDrawable(getResources().getDrawable(R.drawable.upload_step1_photo_change));
-			uploadStepPhoto.startAnimation(ani);
+		switch(v.getId()){
+		case R.id.uploadStepPhoto:
+			// 다현이가 개발한 것을 경화가 임의로 위치 수정. 에러 발생시 체크
+			if(flag==false){
+				flag=true;
+				AlphaAnimation ani = new AlphaAnimation(0, 1);
+				ani.setDuration(500);
+				uploadStepPhoto.setImageDrawable(getResources().getDrawable(R.drawable.upload_step1_photo_change));
+				uploadStepPhoto.startAnimation(ani);
+			}
+			break;
+			
+		case R.id.upload_button_register:
+			customDialog = new CustomDialog(UploadActivity.this,"upload");
+			customDialog.show();
+			break;
+			
+		default:
+			break;
 		}
+		
 		
 	}
 
