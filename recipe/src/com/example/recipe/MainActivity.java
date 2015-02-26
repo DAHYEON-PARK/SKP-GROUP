@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -14,11 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageButton;
 
-public class MainActivity extends ActionBarActivity implements
-NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
 	/**
 	 * Fragment managing the behaviors, interactions and presentation of the
@@ -35,16 +34,24 @@ NavigationDrawerFragment.NavigationDrawerCallbacks {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		//추가부분//
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        ActionBar bar = getSupportActionBar();
+        bar.hide();
+		//////////
+		
 		setContentView(R.layout.activity_main);
 
-		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager()
-				.findFragmentById(R.id.navigation_drawer);
-		mTitle = getTitle();
-
+		mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+		//mTitle = getTitle();
+		
 		// Set up the drawer.
-		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+		//mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 	}
 
+	
+	
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
 		// update the main content by replacing fragments
@@ -78,14 +85,14 @@ NavigationDrawerFragment.NavigationDrawerCallbacks {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		if (!mNavigationDrawerFragment.isDrawerOpen()) {
-			// Only show items in the action bar relevant to this screen
-			// if the drawer is not showing. Otherwise, let the drawer
-			// decide what to show in the action bar.
-			getMenuInflater().inflate(R.menu.main, menu);
-			restoreActionBar();
-			return true;
-		}
+//		if (!mNavigationDrawerFragment.isDrawerOpen()) {
+//			// Only show items in the action bar relevant to this screen
+//			// if the drawer is not showing. Otherwise, let the drawer
+//			// decide what to show in the action bar.
+//			getMenuInflater().inflate(R.menu.main, menu);
+//			restoreActionBar();
+//			return true;
+//		}
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -104,8 +111,7 @@ NavigationDrawerFragment.NavigationDrawerCallbacks {
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
-	public static class PlaceholderFragment extends Fragment implements
-	OnClickListener {
+	public static class PlaceholderFragment extends Fragment implements OnClickListener { // , OnTouchListener{
 
 		/**
 		 * The fragment argument representing the section number for this
@@ -115,14 +121,7 @@ NavigationDrawerFragment.NavigationDrawerCallbacks {
 
 		// 추가 부분//
 		static int number;
-
-		TextView detailBtn;	//, aqBtn, postBtn;
-
-		ImageView foodImg, userImg;
-		TextView nickName, etcText;
-		ImageView direction;
-
-		TextView ingredient, payment;
+		ImageButton secView, firView;
 		////////////
 
 		/**
@@ -144,43 +143,27 @@ NavigationDrawerFragment.NavigationDrawerCallbacks {
 		public PlaceholderFragment() {
 
 		}
+		
+		@Override
+		public void onResume() {
+			// TODO Auto-generated method stub
+			super.onResume();
+			//secView.setImageDrawable(getResources().getDrawable(R.drawable.tv_category_listing_2_unselected));
+		}
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-
-			// View rootView = inflater.inflate(R.layout.fragment_main,
-			// container, false);
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 			// 변경 부분//
-			View rootView = inflater.inflate(R.layout.category_page, container, false);
+			View rootView = inflater.inflate(R.layout.special_page, container, false);
 			
-			foodImg = (ImageView) rootView.findViewById(R.id.foodImg);
-			nickName = (TextView) rootView.findViewById(R.id.nickName);
+			secView = (ImageButton) rootView.findViewById(R.id.secondView);
+			secView.setOnClickListener(this);
 			
-			direction = (ImageView) rootView.findViewById(R.id.direction);
-			
-			payment = (TextView) rootView.findViewById(R.id.payment);
-			detailBtn = (TextView) rootView.findViewById(R.id.detailBtn);
-
-			if (number == 1) {
-				foodImg.setImageDrawable(getResources().getDrawable(R.drawable.recipe_detail_food_img1));
-				direction.setImageDrawable(getResources().getDrawable(R.drawable.recipe_detail_direction1));
-			} else if (number == 2) {
-				foodImg.setImageDrawable(getResources().getDrawable(R.drawable.recipe_detail_food_img2));
-				direction.setImageDrawable(getResources().getDrawable(R.drawable.recipe_detail_direction2));
-
-			} else if (number == 3) {
-				foodImg.setImageDrawable(getResources().getDrawable(R.drawable.recipe_detail_food_img3));
-				direction.setImageDrawable(getResources().getDrawable(R.drawable.recipe_detail_direction3));
-			}
-
-			nickName.setText("page " + number);
-
-			payment.setOnClickListener(this);
-			detailBtn.setOnClickListener(this);
+			firView = (ImageButton) rootView.findViewById(R.id.firstView);
+			firView.setOnClickListener(this);
 			/////////////
-
+			
 			return rootView;
 
 		}
@@ -191,6 +174,30 @@ NavigationDrawerFragment.NavigationDrawerCallbacks {
 			((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
 		}
 
+		// press설정해서 selector도 안되고, xml에서 clickable=true로 해도 안됨 ㅠㅠ 
+		// action down은 되는데 왜 action up는 안됨???? 그리고 clicklistenter를 추가하면 되는거임?? click이 빈 메서드니 필요 없지 않나??
+//		@Override
+//		public boolean onTouch(View v, MotionEvent event) {
+//		
+//			ImageView view = (ImageView)v;
+//			
+//			switch(event.getAction()){
+//			case MotionEvent.ACTION_DOWN : 
+//				//view.setPressed(true);
+//				view.setImageDrawable(getResources().getDrawable(R.drawable.tv_category_listing_2_selected));
+//				// 이케 했더니....long press하면 화면이 넘어가진 않지만 색이 바뀜....왜 action_up이 안되지?? ㅠ
+//				break;
+//			case MotionEvent.ACTION_UP : 
+//				//view.setPressed(false);
+//				view.setImageDrawable(getResources().getDrawable(R.drawable.tv_category_listing_2_unselected));
+//				Intent intent = new Intent((MainActivity) getActivity(),RecipeActivity.class);
+//				((MainActivity) getActivity()).startActivity(intent);
+//				break;
+//			}
+//			
+//			return false;
+//		}
+
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
@@ -198,20 +205,15 @@ NavigationDrawerFragment.NavigationDrawerCallbacks {
 			Intent intent = null;
 			
 			switch(v.getId()){
-				case R.id.payment: 
-					intent = new Intent((MainActivity) getActivity(),PayActivity.class);
+				case R.id.firstView : 
+					intent = new Intent((MainActivity) getActivity(),UploadActivity.class);
 					break;
-				case R.id.detailBtn:
-					intent = new Intent((MainActivity) getActivity(),RecipeDetailActivity.class);
-					break;
-				default:	
-					intent = null;
+				case R.id.secondView : 
+					intent = new Intent((MainActivity) getActivity(),RecipeActivity.class);					
 					break;
 			}
 			
-			if(intent != null){
-				((MainActivity) getActivity()).startActivity(intent);
-			}
+			((MainActivity) getActivity()).startActivity(intent);
 			
 		}
 
