@@ -197,6 +197,11 @@ public class OrderActivity extends ActionBarActivity {
 
 			switch (v.getId()) {
 			case R.id.order_ingredient_bacon_minus:
+				if(text_ingredient_bacon_count.getText().toString().length()==0){
+					text_ingredient_bacon_count.setText("1");
+					break;
+				}
+				
 				value = Integer.parseInt(text_ingredient_bacon_count.getText()
 						.toString());
 
@@ -207,6 +212,11 @@ public class OrderActivity extends ActionBarActivity {
 				text_ingredient_bacon_count.setText(str);
 				break;
 			case R.id.order_ingredient_bacon_plus:
+				if(text_ingredient_bacon_count.getText().toString().length()==0){
+					text_ingredient_bacon_count.setText("1");
+					break;
+				}
+				
 				value = Integer.parseInt(text_ingredient_bacon_count.getText()
 						.toString());
 
@@ -217,6 +227,11 @@ public class OrderActivity extends ActionBarActivity {
 				text_ingredient_bacon_count.setText(str);
 				break;
 			case R.id.order_ingredient_egg_minus:
+				if(text_ingredient_egg_count.getText().toString().length()==0){
+					text_ingredient_egg_count.setText("1");
+					break;
+				}
+				
 				value = Integer.parseInt(text_ingredient_egg_count.getText()
 						.toString());
 
@@ -227,6 +242,11 @@ public class OrderActivity extends ActionBarActivity {
 				text_ingredient_egg_count.setText(str);
 				break;
 			case R.id.order_ingredient_egg_plus:
+				if(text_ingredient_egg_count.getText().toString().length()==0){
+					text_ingredient_egg_count.setText("1");
+					break;
+				}
+				
 				value = Integer.parseInt(text_ingredient_egg_count.getText()
 						.toString());
 
@@ -237,6 +257,11 @@ public class OrderActivity extends ActionBarActivity {
 				text_ingredient_egg_count.setText(str);
 				break;
 			case R.id.order_ingredient_pudding_minus:
+				if(text_ingredient_pudding_count.getText().toString().length()==0){
+					text_ingredient_pudding_count.setText("1");
+					break;
+				}
+				
 				value = Integer.parseInt(text_ingredient_pudding_count.getText()
 						.toString());
 
@@ -247,6 +272,11 @@ public class OrderActivity extends ActionBarActivity {
 				text_ingredient_pudding_count.setText(str);
 				break;
 			case R.id.order_ingredient_pudding_plus:
+				if(text_ingredient_pudding_count.getText().toString().length()==0){
+					text_ingredient_pudding_count.setText("1");
+					break;
+				}
+					
 				value = Integer.parseInt(text_ingredient_pudding_count.getText()
 						.toString());
 
@@ -257,6 +287,11 @@ public class OrderActivity extends ActionBarActivity {
 				text_ingredient_pudding_count.setText(str);
 				break;
 			case R.id.order_ingredient_vegetable_minus:
+				if(text_ingredient_vegetable_count.getText().toString().length()==0){
+					text_ingredient_vegetable_count.setText("1");
+					break;
+				}
+				
 				value = Integer.parseInt(text_ingredient_vegetable_count.getText()
 						.toString());
 
@@ -267,6 +302,10 @@ public class OrderActivity extends ActionBarActivity {
 				text_ingredient_vegetable_count.setText(str);
 				break;
 			case R.id.order_ingredient_vegetable_plus:
+				if(text_ingredient_vegetable_count.getText().toString().length()==0){
+					text_ingredient_vegetable_count.setText("1");
+					break;
+				}
 				value = Integer.parseInt(text_ingredient_vegetable_count.getText()
 						.toString());
 
@@ -284,10 +323,10 @@ public class OrderActivity extends ActionBarActivity {
 	
 	private void makePrice() {
 		// TODO Auto-generated method stub
-			if(text_ingredient_bacon_count.getText().toString()==null 
-					|| text_ingredient_egg_count.getText().toString()==null
-					|| text_ingredient_pudding_count.getText().toString()==null
-					|| text_ingredient_vegetable_count.getText().toString()==null)
+			if(text_ingredient_bacon_count.getText().toString().length()==0 
+					|| text_ingredient_egg_count.getText().toString().length()==0
+					|| text_ingredient_pudding_count.getText().toString().length()==0
+					|| text_ingredient_vegetable_count.getText().toString().length()==0)
 				return;
 		
 			int count_bacon		= Integer.parseInt(text_ingredient_bacon_count.getText().toString());
