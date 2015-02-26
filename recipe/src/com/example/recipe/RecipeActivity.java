@@ -26,7 +26,7 @@ public class RecipeActivity extends ActionBarActivity implements OnClickListener
 	int prevScrollY;
 	int appearY, disappearY;
 	static final int DISTANCE = 100;
-	
+	static final int ACTIVITY_RECIPE_DETAIL = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -85,9 +85,24 @@ public class RecipeActivity extends ActionBarActivity implements OnClickListener
 		}
 		
 		if(intent != null){
-			startActivity(intent);
+			startActivityForResult(intent, ACTIVITY_RECIPE_DETAIL);
 		}
 	}
+
+	@Override
+	protected void onActivityResult(int req, int result, Intent intent) {
+		// TODO Auto-generated method stub
+		switch (req) {
+		case ACTIVITY_RECIPE_DETAIL:
+			if(result==RESULT_OK)
+				finish();
+			break;
+		default:
+			break;
+		}
+
+	}
+
 
 	@Override
 	public void onScrollChanged() {
