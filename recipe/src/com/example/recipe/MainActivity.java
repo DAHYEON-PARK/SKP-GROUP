@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
@@ -206,10 +205,10 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
 			
 			switch(v.getId()){
 				case R.id.firstView : 
-					intent = new Intent((MainActivity) getActivity(),UploadActivity.class);
+					intent = new Intent(getActivity(),UploadActivity.class);
 					break;
 				case R.id.secondView : 
-					intent = new Intent((MainActivity) getActivity(),RecipeActivity.class);					
+					intent = new Intent(getActivity(),RecipeActivity.class);					
 					break;
 			}
 			
