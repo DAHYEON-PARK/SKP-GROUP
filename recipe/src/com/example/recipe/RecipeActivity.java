@@ -1,9 +1,14 @@
 package com.example.recipe;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver.OnScrollChangedListener;
@@ -16,22 +21,31 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 public class RecipeActivity extends ActionBarActivity implements OnClickListener, OnScrollChangedListener{ //, OnTouchListener {
 
+	ActionBarDrawerToggle dtToggle;
+	DrawerLayout dlDrawer;
+	
 	ScrollView recipe_scroll;
+	ImageButton leftBtn, rightBtn;
 	ImageButton detailPageBtn, commentBtn, buyBtn; 
+	ImageButton categoryView;
 	LinearLayout belowTab;
 	
 	int prevScrollY;
 	int appearY, disappearY;
 	static final int DISTANCE = 100;
-	static final int ACTIVITY_RECIPE_DETAIL = 0;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.recipe_page);
+		
+		dlDrawer = (DrawerLayout) findViewById(R.id.dl_activity_main);
+		dtToggle = new ActionBarDrawerToggle(this, dlDrawer, R.drawable.ic_drawer,0, 0);
 		
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
@@ -44,9 +58,15 @@ public class RecipeActivity extends ActionBarActivity implements OnClickListener
         recipe_scroll.getViewTreeObserver().addOnScrollChangedListener(this);
 //		recipe_scroll.pageScroll(ScrollView.FOCUS_UP);
         
+        leftBtn = (ImageButton) findViewById(R.id.leftBtn);
+        rightBtn = (ImageButton) findViewById(R.id.rightBtn);
+        
 		detailPageBtn = (ImageButton) this.findViewById(R.id.detailPageBtn);
 		commentBtn = (ImageButton) this.findViewById(R.id.commentBtn);
 		buyBtn = (ImageButton) this.findViewById(R.id.buyBtn);
+		
+		leftBtn.setOnClickListener(this);	
+		rightBtn.setOnClickListener(this);	
 		
 		detailPageBtn.setOnClickListener(this);		
 		commentBtn.setOnClickListener(this);
@@ -57,9 +77,32 @@ public class RecipeActivity extends ActionBarActivity implements OnClickListener
 		
 		appearY = 0;
 		disappearY = DISTANCE;
+		
+		categoryView = (ImageButton) findViewById(R.id.categoryView);
+		categoryView.setOnClickListener(this);
 	}
 	
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		dtToggle.syncState();
+	}
 
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		dtToggle.onConfigurationChanged(newConfig);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (dtToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+		
+	}
+	
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
@@ -73,36 +116,31 @@ public class RecipeActivity extends ActionBarActivity implements OnClickListener
 		Intent intent = null; 
 		
 		switch(v.getId()){
+			case R.id.leftBtn : 
+				super.onBackPressed();
+				break;
+			case R.id.rightBtn : 
+				dlDrawer.openDrawer(Gravity.RIGHT);
+				break;
 			case R.id.detailPageBtn : 
 				intent = new Intent(this, RecipeDetailActivity.class);
-				break;
-			case R.id.commentBtn :
-				
 				break;
 			case R.id.buyBtn :
 				intent = new Intent(this, OrderActivity.class);
 				break;
+			case R.id.categoryView :
+				dlDrawer.closeDrawer(Gravity.RIGHT);
+				Toast.makeText(this, "이벤트 구현 예정", Toast.LENGTH_SHORT).show();
+				break;
+			default : 
+				Toast.makeText(this, "진짜 댓글을 작성하실 건가요?", Toast.LENGTH_SHORT).show();
+				break;
 		}
 		
 		if(intent != null){
-			startActivityForResult(intent, ACTIVITY_RECIPE_DETAIL);
+			startActivity(intent);
 		}
 	}
-
-	@Override
-	protected void onActivityResult(int req, int result, Intent intent) {
-		// TODO Auto-generated method stub
-		switch (req) {
-		case ACTIVITY_RECIPE_DETAIL:
-			if(result==RESULT_OK)
-				finish();
-			break;
-		default:
-			break;
-		}
-
-	}
-
 
 	@Override
 	public void onScrollChanged() {

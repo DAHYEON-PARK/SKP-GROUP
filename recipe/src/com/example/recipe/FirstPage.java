@@ -1,5 +1,6 @@
 package com.example.recipe;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -8,17 +9,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class FirstPage extends Fragment implements OnClickListener, OnPageChangeListener {
 
 	ViewPager mViewPager;
 	mViewAdapter mPagerAdapter;
-	ImageButton rankBtn, tvBtn, honeyMixBtn;
+	mViewSecondAdapter mSecondAdapter;
+	ImageButton rankBtn, tvBtn, honeyMixBtn, etcBtn;
 	
 	View view;
-	ImageView indicator; //, title;
+	ImageView indicator;	
+	ImageView curTitle;
+	
+	int tabFlag = 1;
 	
 	public FirstPage newInstance() {
 		FirstPage fragment = new FirstPage();
@@ -36,19 +44,24 @@ public class FirstPage extends Fragment implements OnClickListener, OnPageChange
 		mViewPager.setOffscreenPageLimit(3);
 		
 		indicator = (ImageView) view.findViewById(R.id.indicator);
-		//title = (ImageView) view.findViewById(R.id.title);
+		//prevTitle = (ImageView) view.findViewById(R.id.prevTitle);
+		curTitle = (ImageView) view.findViewById(R.id.curTitle);
 		
 		rankBtn = (ImageButton) view.findViewById(R.id.rankBtn);
 		tvBtn = (ImageButton) view.findViewById(R.id.tvBtn);
 		honeyMixBtn = (ImageButton) view.findViewById(R.id.honeymixBtn);
+		etcBtn = (ImageButton) view.findViewById(R.id.etcBtn);
 		
 		rankBtn.setOnClickListener(this);
 		tvBtn.setOnClickListener(this);
 		honeyMixBtn.setOnClickListener(this);
+		etcBtn.setOnClickListener(this);
 		
 		rankBtn.setSelected(true);
 		
 		mPagerAdapter = new mViewAdapter(getActivity());
+		mSecondAdapter = new mViewSecondAdapter(getActivity());
+		
 		mViewPager.setAdapter(mPagerAdapter);
 		
 		return view;
@@ -62,20 +75,35 @@ public class FirstPage extends Fragment implements OnClickListener, OnPageChange
 		switch(v.getId()){
 			case R.id.rankBtn : 
 				setSelect(true, false, false);
+				tabFlag = 1;
+//				mPagerAdapter.setTabFlag(1);
+//				mPagerAdapter.notifyDataSetChanged();
+				mViewPager.setAdapter(mPagerAdapter);
+				onPageSelected(0);
+				//Log.d("main","첫번째" + mViewPager.getChildCount());
 				break;
 			case R.id.tvBtn : 
 				setSelect(false, true, false);
+				tabFlag = 2;
+//				mPagerAdapter.setTabFlag(2);
+//				mPagerAdapter.notifyDataSetChanged();
+				mViewPager.setAdapter(mSecondAdapter);
+				onPageSelected(0);
+				//Log.d("main","두번째" + mViewPager.getChildCount());
 				break;
-			case R.id.honeymixBtn : 
-				setSelect(false, false, true);
+			default:
+				Toast.makeText(getActivity(), "구현 예정", Toast.LENGTH_SHORT).show();
 				break;
+//			case R.id.honeymixBtn : 
+//				setSelect(false, false, true);
+//				break;
 		}
 	}
 	
 	public void setSelect(boolean rank, boolean tv, boolean honeyMix){
 		rankBtn.setSelected(rank);
 		tvBtn.setSelected(tv);
-		honeyMixBtn.setSelected(honeyMix);
+		//honeyMixBtn.setSelected(honeyMix);
 	}
 
 
@@ -97,16 +125,39 @@ public class FirstPage extends Fragment implements OnClickListener, OnPageChange
 	public void onPageSelected(int currentPage) {
 		// TODO Auto-generated method stub
 		
-		if(currentPage == 0){
-			indicator.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_first_indicator));
-			//title.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_first_title));
-		}else if(currentPage == 1){
-			indicator.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_second_indicator));
-			//title.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_second_title));
-		}else if(currentPage == 2){
-			indicator.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_third_indicator));
-			//title.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_third_title));
+		if(tabFlag==1){
+			indicator.setBackgroundColor(Color.TRANSPARENT);
+			
+			if(currentPage == 0){
+				indicator.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_first_indicator));
+				curTitle.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_first_title));
+				
+			}else if(currentPage == 1){
+				indicator.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_second_indicator));
+				curTitle.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_second_title));
+			}else if(currentPage == 2){
+				indicator.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_third_indicator));
+				curTitle.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_third_title));
+			}
+		}else if(tabFlag==2){
+			if(currentPage == 0){
+				indicator.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_first_indicator));
+				curTitle.setImageDrawable(null);
+			}else if(currentPage == 1){
+				indicator.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_second_indicator));
+				curTitle.setImageDrawable(null);
+			}else if(currentPage == 2){
+				indicator.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_third_indicator));
+				curTitle.setImageDrawable(null);			}
 		}
+		
+		Animation fadeIn = new AlphaAnimation(0, 1);
+		fadeIn.setDuration(300);
+		fadeIn.setFillAfter(true);
+		
+		curTitle.setAnimation(fadeIn);
 	}
+	
+	
 
 }

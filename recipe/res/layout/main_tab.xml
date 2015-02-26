@@ -25,6 +25,7 @@
     </FrameLayout>
 
     <FrameLayout
+        
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
         
@@ -36,16 +37,24 @@
         <ImageView
             android:id="@+id/indicator"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:scaleType="fitXY" 
             android:src="@drawable/main_rank_first_indicator"/>
-<!--          
+          
         <ImageView
-            android:id="@+id/title"
+            android:id="@+id/curTitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY" />
---> 
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:src="@drawable/main_rank_first_title" />
+        
+     <!--    <ImageView
+            android:id="@+id/prevTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"/> -->
+ 
         <HorizontalScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,11 +79,13 @@
 
                 <ImageButton
                     android:id="@+id/honeymixBtn"
+                    android:background="#00000000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/selector_main_honeymix"/>
+                    android:src="@drawable/main_honeymix_btn_unselected"/>
 
-                <ImageView
+                <ImageButton
+                    android:id="@+id/etcBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/main_horizonscroll_btn" />

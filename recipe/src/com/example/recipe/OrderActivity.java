@@ -169,8 +169,8 @@ public class OrderActivity extends ActionBarActivity {
 
 			switch (v.getId()) {
 			case R.id.order_button_back:
-				Toast.makeText(getApplicationContext(), "뒤로 가기 구현하기 귀찮아...",
-						Toast.LENGTH_SHORT).show();
+				
+				OrderActivity.this.onBackPressed();
 				break;
 			case R.id.order_button_add_other:
 				Toast.makeText(getApplicationContext(), "추가재료 등록하기 귀찮아...",

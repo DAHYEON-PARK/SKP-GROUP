@@ -1,93 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent" >
 
-    <ImageView
+    <android.support.v4.widget.DrawerLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        
+        android:id="@+id/dl_activity_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:src="@drawable/recipe_page_status_bar" />
+        android:layout_height="match_parent"
+        tools:context=".RecipeActivity" >
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <ScrollView
-            android:id="@+id/recipe_scroll"
+        <FrameLayout
+            android:id="@+id/fl_activity_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="match_parent" >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical" >
 
-                <ImageButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-                    android:background="@drawable/selector_recipe_page_video" />
-                
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scaleType="fitXY"
-                    android:src="@drawable/recipe_page_info" />
+                    android:src="@drawable/tv_category_list_statusbar" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
 
-                    <ImageView
+                    <ScrollView
+                        android:id="@+id/recipe_scroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" >
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" >
+
+                                <ImageButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/selector_recipe_page_video"
+                                    android:scaleType="fitXY" />
+
+                                <ImageButton
+                                    android:id="@+id/leftBtn"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left"
+                                    android:background="#00000000"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/recipe_page_left_btn" />
+
+                                <ImageButton
+                                    android:id="@+id/rightBtn"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right"
+                                    android:background="#00000000"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/recipe_page_right_btn" />
+                            </FrameLayout>
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/recipe_page_info" />
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" >
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/recipe_page_btn_view" />
+
+                                <ImageButton
+                                    android:id="@+id/detailPageBtn"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="30dp"
+                                    android:layout_marginRight="30dp"
+                                    android:layout_marginTop="250dp"
+                                    android:background="@drawable/selector_recipe_page_btn"
+                                    android:scaleType="fitXY" />
+                            </FrameLayout>
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/recipe_page_ingredient" />
+                        </LinearLayout>
+                    </ScrollView>
+
+                    <LinearLayout
+                        android:id="@+id/belowTab"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/recipe_page_btn_view" />
+                        android:layout_gravity="bottom"
+                        android:orientation="horizontal" >
 
-                    <ImageButton
-                        android:id="@+id/detailPageBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginTop="250dp"
-                        android:background="@drawable/selector_recipe_page_btn"
-                        android:scaleType="fitXY" />
+                        <ImageButton
+                            android:id="@+id/commentBtn"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/selector_recipe_tab_comment"
+                            android:scaleType="fitXY" />
+
+                        <ImageButton
+                            android:id="@+id/buyBtn"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/selector_recipe_tab_buy"
+                            android:scaleType="fitXY" />
+                    </LinearLayout>
                 </FrameLayout>
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/recipe_page_ingredient" />
             </LinearLayout>
-        </ScrollView>
+        </FrameLayout>
 
-        <LinearLayout
-            android:id="@+id/belowTab"
-            android:layout_width="match_parent"
+        <ImageButton
+            android:id="@+id/categoryView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:orientation="horizontal" >
+            android:layout_gravity="end"
+            android:background="#00000000"
+            android:src="@drawable/category_tv_unselected" />
+    </android.support.v4.widget.DrawerLayout>
 
-            <ImageButton
-                android:id="@+id/commentBtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_recipe_tab_comment"
-                android:scaleType="fitXY" />
-
-            <ImageButton
-                android:id="@+id/buyBtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/selector_recipe_tab_buy"
-                android:scaleType="fitXY" />
-        </LinearLayout>
-    </FrameLayout>
-
-</LinearLayout>
+</FrameLayout>

@@ -1,182 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    android:orientation="vertical">
-    
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/tv_category_list_actionbar"
-        android:scaleType="fitXY" />
-    
-    <ScrollView 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        
-        <LinearLayout 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:src="@drawable/tv_category_list_title_view"
-		        android:scaleType="fitXY" />
-            
-            <ImageButton
-                android:id="@+id/firstView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#00000000"
-                android:scaleType="fitXY"
-                android:src="@drawable/tv_category_list_first_view" />
-           
-            <ImageButton
-                android:id="@+id/secondView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:background="@drawable/selector_tv_category_second_view" />
-             
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:src="@drawable/tv_category_list_third_view"/>
-          
-        </LinearLayout>
-        
-    </ScrollView>
-    
-</LinearLayout>
-
-<!--  
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <LinearLayout
+    <android.support.v4.widget.DrawerLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        
+        android:id="@+id/dl_activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        tools:context=".SpecialActivity" >
 
-        <ScrollView
+        <FrameLayout
+            android:id="@+id/fl_activity_main"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
+            android:layout_height="match_parent" >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical" >
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:background="@color/white" >
-
-                    <ImageView
-                        android:id="@+id/foodImg"
-                        android:layout_width="match_parent"
-                        android:layout_height="160dp"
-                        android:scaleType="fitXY" />
-
-                    <ImageView
-                        android:id="@+id/userImg"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="125dp"
-                        android:src="@drawable/recipe_detail_user_img" />
-
-                    <TextView
-                        android:id="@+id/nickName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="100dp"
-                        android:layout_marginTop="135dp"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/sp18" />
-
-                    <TextView
-                        android:id="@+id/etcText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="100dp"
-                        android:layout_marginTop="165dp"
-                        android:text="랭킹 / 좋아요"
-                        android:textSize="@dimen/sp12" />
-                </FrameLayout>
-
                 <ImageView
-                    android:id="@+id/direction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY" />
+                    android:scaleType="fitXY"
+                    android:src="@drawable/tv_category_list_statusbar" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" >
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/tv_category_list_actionbar" />
+
+                            <ImageButton
+                                android:id="@+id/actionLeftBtn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:background="#00000000"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/tv_category_list_actionbar_left_btn" />
+
+                            <ImageButton
+                                android:id="@+id/actionRightBtn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:background="#00000000"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/tv_category_list_actionbar_right_btn" />
+                        </FrameLayout>
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/tv_category_list_title_view" />
+
+                        <ImageButton
+                            android:id="@+id/firstView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/tv_category_list_first_view" />
+
+                        <ImageButton
+                            android:id="@+id/secondView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/selector_tv_category_second_view"
+                            android:scaleType="fitXY" />
+
+                        <ImageButton
+                            android:id="@+id/thirdView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/tv_category_list_third_view" />
+                    </LinearLayout>
+                </ScrollView>
             </LinearLayout>
-        </ScrollView>
+        </FrameLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/orange"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/ingredient"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:gravity="center"
-                android:text="재료를 알려주세요ㅎㅎㅎㅎㅎ" />
-
-            <TextView
-                android:id="@+id/payment"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@color/darkorange"
-                android:gravity="center"
-                android:text="구매하기"
-                android:textSize="@dimen/sp20" />
-        </LinearLayout>
-    </LinearLayout>
-    
-    <TextView
-        android:id="@+id/qaBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="250dp"
-        android:background="@color/blue"
-        android:padding="10dp"
-        android:text="QA"
-        android:textSize="@dimen/sp15" />
-
-    <TextView
-        android:id="@+id/postBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="300dp"
-        android:background="@color/blue"
-        android:padding="10dp"
-        android:text="후기"
-        android:textSize="@dimen/sp15" />
-    
-
-    <TextView
-        android:id="@+id/detailBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="350dp"
-        android:background="@color/blue"
-        android:padding="10dp"
-        android:text="Detail"
-        android:textSize="@dimen/sp15" />
+        <ImageButton
+            android:id="@+id/categoryView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="#00000000"
+            android:src="@drawable/category_tv_unselected" />
+    </android.support.v4.widget.DrawerLayout>
 
 </FrameLayout>
--->

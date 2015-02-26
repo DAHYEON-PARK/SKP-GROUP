@@ -24,7 +24,6 @@ public class RecipeDetailActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.recipe_detail_page);
 		
-		this.setResult(RESULT_OK);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		ActionBar bar = getSupportActionBar();
         bar.hide();
@@ -41,8 +40,7 @@ public class RecipeDetailActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(getApplicationContext(), RecipeActivity.class);
-				startActivity(intent);
+				RecipeDetailActivity.this.onBackPressed();
 			}
 		});
 		

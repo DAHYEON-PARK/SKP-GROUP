@@ -8,7 +8,7 @@
         android:id="@+id/dl_activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Main" >
+        tools:context=".MainActivity" >
 
         <FrameLayout
             android:id="@+id/fl_activity_main"
