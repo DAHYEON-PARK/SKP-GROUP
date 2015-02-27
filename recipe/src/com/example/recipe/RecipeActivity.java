@@ -23,7 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-public class RecipeActivity extends ActionBarActivity implements OnClickListener, OnScrollChangedListener{ //, OnTouchListener {
+public class RecipeActivity extends ActionBarActivity implements OnClickListener, OnScrollChangedListener{ 
 
 	ActionBarDrawerToggle dtToggle;
 	DrawerLayout dlDrawer;
@@ -50,13 +50,10 @@ public class RecipeActivity extends ActionBarActivity implements OnClickListener
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
 		ActionBar actionBar = getSupportActionBar();
-//		actionBar.setDisplayShowTitleEnabled(true);
-//		actionBar.setTitle("cheffy");
 		actionBar.hide();
         
         recipe_scroll = (ScrollView) this.findViewById(R.id.recipe_scroll);
         recipe_scroll.getViewTreeObserver().addOnScrollChangedListener(this);
-//		recipe_scroll.pageScroll(ScrollView.FOCUS_UP);
         
         leftBtn = (ImageButton) findViewById(R.id.leftBtn);
         rightBtn = (ImageButton) findViewById(R.id.rightBtn);
@@ -130,7 +127,7 @@ public class RecipeActivity extends ActionBarActivity implements OnClickListener
 				break;
 			case R.id.categoryView :
 				dlDrawer.closeDrawer(Gravity.RIGHT);
-				Toast.makeText(this, "이벤트 구현 예정", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "이벤트 구현 예정이에요~", Toast.LENGTH_SHORT).show();
 				break;
 			default : 
 				Toast.makeText(this, "진짜 댓글을 작성하실 건가요?", Toast.LENGTH_SHORT).show();
@@ -185,10 +182,9 @@ public class RecipeActivity extends ActionBarActivity implements OnClickListener
 	    		  belowTab.startAnimation(set);	    		 
 	    	  }
 	    	  appearY = scrollY - DISTANCE;
-	    	  //Log.d("group", "scrollDown  " + belowTab.getHeight());
 	    	  
 	      } else if (prevScrollY > scrollY ) {
-	    	  //Log.d("group", "scrollUp");
+	    	  
 	    	  if ((Boolean)belowTab.getTag() == true && scrollY <= appearY) {	    		  
 	    		  belowTab.setVisibility(View.VISIBLE);
 	    		  belowTab.setTag(false);
@@ -211,5 +207,4 @@ public class RecipeActivity extends ActionBarActivity implements OnClickListener
 	      prevScrollY = scrollY;
 	}
 
-	
 }

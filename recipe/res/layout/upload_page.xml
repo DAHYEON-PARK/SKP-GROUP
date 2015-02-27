@@ -1,105 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/totalView"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/upload_backgroud" >
+    android:orientation="vertical" >
 
     <ImageView
-        android:id="@+id/uploadActionBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/upload_actionbar" />
+        android:scaleType="fitXY"
+        android:src="@drawable/upload_status_bar_orange" />
 
-    <LinearLayout
-        android:id="@+id/moveView"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_height="match_parent"
+        android:background="@drawable/upload_backgroud" >
 
         <FrameLayout
-            android:id="@+id/titleView"
+            android:id="@+id/uploadActionBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true" >
+            android:layout_height="wrap_content" >
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
-                android:src="@drawable/upload_title" />
+                android:src="@drawable/upload_actionbar_bg" />
 
-            <EditText
-                android:layout_width="230dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="105dp"
-                android:layout_marginTop="49dp"
+            <ImageButton
+                android:id="@+id/actionBarBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:background="#00000000"
-                android:hint="레시피 제목을 써주세요 (최대 15자)"
-                android:paddingLeft="3dp"
-                android:textSize="@dimen/sp11" />
+                android:src="@drawable/upload_actionbar_btn" >
+            </ImageButton>
         </FrameLayout>
 
-        <ScrollView
-            android:id="@+id/uploadScroll"
+        <LinearLayout
+            android:id="@+id/moveView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <ImageButton
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/selector_upload_addphoto"
-                    android:scaleType="fitXY" />
+                android:focusable="true"
+                android:focusableInTouchMode="true" >
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/upload_set_recipe_info" />
+                    android:src="@drawable/upload_title" />
 
-                <ImageView
+                <EditText
+                    android:layout_width="230dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="105dp"
+                    android:layout_marginTop="49dp"
+                    android:background="#00000000"
+                    android:hint="레시피 제목을 써주세요 (최대 15자)"
+                    android:paddingLeft="3dp"
+                    android:textSize="@dimen/sp11" />
+            </FrameLayout>
+
+            <ScrollView
+                android:id="@+id/uploadScroll"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" >
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/upload_start" />
+                    android:orientation="vertical" >
 
-                <ImageButton
-                    android:id="@+id/uploadStepPhoto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/selector_upload_step1_photo"
-                    android:scaleType="fitXY" />
+                    <ImageButton
+                        android:id="@+id/video"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selector_upload_addphoto" />
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    <ImageButton
+                        android:id="@+id/pplBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:src="@drawable/upload_ppl_zero" />
+
+                    <ImageButton
+                        android:id="@+id/timeBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:src="@drawable/upload_time_zero" />
+
+                    <ImageButton
+                        android:id="@+id/difficultBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:src="@drawable/upload_difficulty_zero" />
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/upload_new_step" />
+                        android:src="@drawable/upload_start" />
 
                     <ImageButton
-                        android:id="@+id/upload_button_register"
+                        android:id="@+id/uploadStepOnePhoto"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginTop="200dp"
-                        android:background="@drawable/selector_register_btn"
+                        android:background="@drawable/selector_upload_step1_photo"
                         android:scaleType="fitXY" />
-                </FrameLayout>
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
 
-</FrameLayout>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/upload_step_two" />
+
+                    <ImageButton
+                        android:id="@+id/uploadStepTwoPhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/selector_upload_step1_photo"
+                        android:scaleType="fitXY" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/upload_new_step" />
+
+                        <ImageButton
+                            android:id="@+id/upload_button_register"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="200dp"
+                            android:background="@drawable/selector_register_btn" />
+                    </FrameLayout>
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

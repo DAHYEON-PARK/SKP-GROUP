@@ -34,14 +34,14 @@ public class OrderActivity extends ActionBarActivity {
 	EditText text_ingredient_vegetable_count;
 
 	TextView order_text_price;
-	
+
 	CustomDialog customDialog;
 
 	private static final int INGREDIENT_PRICE_BACON 	= 3000;
 	private static final int INGREDIENT_PRICE_EGG 		= 500;
 	private static final int INGREDIENT_PRICE_PUDDING 	= 500;
 	private static final int INGREDIENT_PRICE_VEGETABLE = 1000;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -87,6 +87,8 @@ public class OrderActivity extends ActionBarActivity {
 			@Override
 			public void afterTextChanged(Editable s) {}
 		});
+
+
 		text_ingredient_egg_count.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -100,6 +102,8 @@ public class OrderActivity extends ActionBarActivity {
 			@Override
 			public void afterTextChanged(Editable s) {}
 		});
+
+
 		text_ingredient_pudding_count.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -113,6 +117,8 @@ public class OrderActivity extends ActionBarActivity {
 			@Override
 			public void afterTextChanged(Editable s) {}
 		});
+
+
 		text_ingredient_vegetable_count.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -127,6 +133,7 @@ public class OrderActivity extends ActionBarActivity {
 			@Override
 			public void afterTextChanged(Editable s) {}
 		});
+
 	}
 
 	private void initLayout() {
@@ -155,7 +162,7 @@ public class OrderActivity extends ActionBarActivity {
 
 		text_ingredient_vegetable_count = (EditText) findViewById(R.id.order_ingredient_vegetable_edittext);
 		text_ingredient_vegetable_count.setText("1");
-		
+
 		order_text_price = (TextView)findViewById(R.id.order_text_price);
 		makePrice();
 
@@ -169,7 +176,7 @@ public class OrderActivity extends ActionBarActivity {
 
 			switch (v.getId()) {
 			case R.id.order_button_back:
-				
+
 				OrderActivity.this.onBackPressed();
 				break;
 			case R.id.order_button_add_other:
@@ -201,7 +208,7 @@ public class OrderActivity extends ActionBarActivity {
 					text_ingredient_bacon_count.setText("1");
 					break;
 				}
-				
+
 				value = Integer.parseInt(text_ingredient_bacon_count.getText()
 						.toString());
 
@@ -216,7 +223,7 @@ public class OrderActivity extends ActionBarActivity {
 					text_ingredient_bacon_count.setText("1");
 					break;
 				}
-				
+
 				value = Integer.parseInt(text_ingredient_bacon_count.getText()
 						.toString());
 
@@ -231,7 +238,7 @@ public class OrderActivity extends ActionBarActivity {
 					text_ingredient_egg_count.setText("1");
 					break;
 				}
-				
+
 				value = Integer.parseInt(text_ingredient_egg_count.getText()
 						.toString());
 
@@ -246,7 +253,7 @@ public class OrderActivity extends ActionBarActivity {
 					text_ingredient_egg_count.setText("1");
 					break;
 				}
-				
+
 				value = Integer.parseInt(text_ingredient_egg_count.getText()
 						.toString());
 
@@ -261,7 +268,7 @@ public class OrderActivity extends ActionBarActivity {
 					text_ingredient_pudding_count.setText("1");
 					break;
 				}
-				
+
 				value = Integer.parseInt(text_ingredient_pudding_count.getText()
 						.toString());
 
@@ -276,7 +283,7 @@ public class OrderActivity extends ActionBarActivity {
 					text_ingredient_pudding_count.setText("1");
 					break;
 				}
-					
+
 				value = Integer.parseInt(text_ingredient_pudding_count.getText()
 						.toString());
 
@@ -291,7 +298,7 @@ public class OrderActivity extends ActionBarActivity {
 					text_ingredient_vegetable_count.setText("1");
 					break;
 				}
-				
+
 				value = Integer.parseInt(text_ingredient_vegetable_count.getText()
 						.toString());
 
@@ -320,23 +327,23 @@ public class OrderActivity extends ActionBarActivity {
 			}
 		}
 	};
-	
+
 	private void makePrice() {
 		// TODO Auto-generated method stub
-			if(text_ingredient_bacon_count.getText().toString().length()==0 
-					|| text_ingredient_egg_count.getText().toString().length()==0
-					|| text_ingredient_pudding_count.getText().toString().length()==0
-					|| text_ingredient_vegetable_count.getText().toString().length()==0)
-				return;
-		
-			int count_bacon		= Integer.parseInt(text_ingredient_bacon_count.getText().toString());
-			int count_egg		= Integer.parseInt(text_ingredient_egg_count.getText().toString());
-			int count_pudding	= Integer.parseInt(text_ingredient_pudding_count.getText().toString());
-			int count_vegetable = Integer.parseInt(text_ingredient_vegetable_count.getText().toString());;
+		if(text_ingredient_bacon_count.getText().toString().length()==0 
+				|| text_ingredient_egg_count.getText().toString().length()==0
+				|| text_ingredient_pudding_count.getText().toString().length()==0
+				|| text_ingredient_vegetable_count.getText().toString().length()==0)
+			return;
 
-			Integer price 		= count_bacon*INGREDIENT_PRICE_BACON + count_egg*INGREDIENT_PRICE_EGG + count_pudding*INGREDIENT_PRICE_PUDDING + count_vegetable*INGREDIENT_PRICE_VEGETABLE;
-			
-			order_text_price.setText(price.toString());
-			
+		int count_bacon		= Integer.parseInt(text_ingredient_bacon_count.getText().toString());
+		int count_egg		= Integer.parseInt(text_ingredient_egg_count.getText().toString());
+		int count_pudding	= Integer.parseInt(text_ingredient_pudding_count.getText().toString());
+		int count_vegetable = Integer.parseInt(text_ingredient_vegetable_count.getText().toString());;
+
+		Integer price 		= count_bacon*INGREDIENT_PRICE_BACON + count_egg*INGREDIENT_PRICE_EGG + count_pudding*INGREDIENT_PRICE_PUDDING + count_vegetable*INGREDIENT_PRICE_VEGETABLE;
+
+		order_text_price.setText(price.toString());
+
 	}
 }

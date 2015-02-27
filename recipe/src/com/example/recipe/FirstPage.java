@@ -44,7 +44,6 @@ public class FirstPage extends Fragment implements OnClickListener, OnPageChange
 		mViewPager.setOffscreenPageLimit(3);
 		
 		indicator = (ImageView) view.findViewById(R.id.indicator);
-		//prevTitle = (ImageView) view.findViewById(R.id.prevTitle);
 		curTitle = (ImageView) view.findViewById(R.id.curTitle);
 		
 		rankBtn = (ImageButton) view.findViewById(R.id.rankBtn);
@@ -76,34 +75,24 @@ public class FirstPage extends Fragment implements OnClickListener, OnPageChange
 			case R.id.rankBtn : 
 				setSelect(true, false, false);
 				tabFlag = 1;
-//				mPagerAdapter.setTabFlag(1);
-//				mPagerAdapter.notifyDataSetChanged();
 				mViewPager.setAdapter(mPagerAdapter);
 				onPageSelected(0);
-				//Log.d("main","첫번째" + mViewPager.getChildCount());
 				break;
 			case R.id.tvBtn : 
 				setSelect(false, true, false);
 				tabFlag = 2;
-//				mPagerAdapter.setTabFlag(2);
-//				mPagerAdapter.notifyDataSetChanged();
 				mViewPager.setAdapter(mSecondAdapter);
 				onPageSelected(0);
-				//Log.d("main","두번째" + mViewPager.getChildCount());
 				break;
 			default:
 				Toast.makeText(getActivity(), "구현 예정", Toast.LENGTH_SHORT).show();
 				break;
-//			case R.id.honeymixBtn : 
-//				setSelect(false, false, true);
-//				break;
 		}
 	}
 	
 	public void setSelect(boolean rank, boolean tv, boolean honeyMix){
 		rankBtn.setSelected(rank);
 		tvBtn.setSelected(tv);
-		//honeyMixBtn.setSelected(honeyMix);
 	}
 
 
@@ -131,7 +120,6 @@ public class FirstPage extends Fragment implements OnClickListener, OnPageChange
 			if(currentPage == 0){
 				indicator.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_first_indicator));
 				curTitle.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_first_title));
-				
 			}else if(currentPage == 1){
 				indicator.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_second_indicator));
 				curTitle.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_second_title));
@@ -148,16 +136,9 @@ public class FirstPage extends Fragment implements OnClickListener, OnPageChange
 				curTitle.setImageDrawable(null);
 			}else if(currentPage == 2){
 				indicator.setImageDrawable(getResources().getDrawable(R.drawable.main_rank_third_indicator));
-				curTitle.setImageDrawable(null);			}
+				curTitle.setImageDrawable(null);			
+			}
 		}
-		
-		Animation fadeIn = new AlphaAnimation(0, 1);
-		fadeIn.setDuration(300);
-		fadeIn.setFillAfter(true);
-		
-		curTitle.setAnimation(fadeIn);
 	}
-	
-	
 
 }

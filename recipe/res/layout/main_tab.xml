@@ -48,12 +48,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:src="@drawable/main_rank_first_title" />
-        
-     <!--    <ImageView
-            android:id="@+id/prevTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"/> -->
  
         <HorizontalScrollView
             android:layout_width="wrap_content"

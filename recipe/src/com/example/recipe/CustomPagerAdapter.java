@@ -11,7 +11,6 @@ import android.widget.ImageView;
 
 public class CustomPagerAdapter extends PagerAdapter implements OnClickListener{
 
-//	List<ViewGroup> viewHolder = new ArrayList<ViewGroup>();  재활용??
 	private final int pageNum = 8;
 	
 	Context context;

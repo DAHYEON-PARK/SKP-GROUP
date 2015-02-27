@@ -1,6 +1,5 @@
 package com.example.recipe;
 
-
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -9,77 +8,72 @@ import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver.OnScrollChangedListener;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.VideoView;
 
 public class UploadActivity extends ActionBarActivity implements OnScrollChangedListener, OnClickListener{
 
-	ImageView uploadActionBar;
-	FrameLayout titleView;
-	ScrollView uploadScroll;
-	ImageButton uploadStepPhoto;
+	FrameLayout uploadActionBar;
+	ImageButton actionBarBtn;
+	
 	LinearLayout moveView;
+	ScrollView uploadScroll;
+	
+	ImageButton video, pplBtn, timeBtn, difficultBtn, uploadStepOnePhoto, uploadStepTwoPhoto;
 	ImageButton upload_button_register;
+	
 	ActionBar bar;
 	CustomDialog customDialog;
 	
-	boolean flag = false;
 	int prevScrollY;
-	
 	int actionbarHeight;
 	boolean scrollFlag = false;
-	
-	//GestureDetector ges;
-	
+	boolean dialogFlag = false;
+	boolean videoFlag = true, stepOneFlag = true, stepTwoFlag = true;
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.upload_page);
 		
-	// Window win = getWindow();
-	// win.setStatusBarColor(getResources().getColor(R.color.status_bar_color));
-	//	 win.setStatusBarColor(Color.WHITE);
-		
-//		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//	        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-	        //getWindow().setStatusBarColor(getResources().getColor(R.color.status_bar_color));
-//	    }
-//		
-//		Window win = this.getWindow();
-//		win.setStatusBarColor(getResources().getColor(R.color.status_bar_color));
-		
-		
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
-		//getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-		//getWindow().setStatusBarColor(Color.TRANSPARENT);
 		
 		bar = getSupportActionBar();
 		bar.hide();
-		
-		//ges = new GestureDetector(new MyGes());
-		
-		
-//        bar.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_bg));
         
+        uploadActionBar = (FrameLayout) findViewById(R.id.uploadActionBar);
+        actionBarBtn = (ImageButton) findViewById(R.id.actionBarBtn);
+        actionBarBtn.setOnClickListener(this);
         
-        uploadActionBar = (ImageView) findViewById(R.id.uploadActionBar);
-        titleView = (FrameLayout) findViewById(R.id.titleView);
+        moveView = (LinearLayout) findViewById(R.id.moveView);
         
         uploadScroll = (ScrollView) findViewById(R.id.uploadScroll);
         uploadScroll.getViewTreeObserver().addOnScrollChangedListener(this);
         
-        uploadStepPhoto = (ImageButton) findViewById(R.id.uploadStepPhoto);
-        uploadStepPhoto.setOnClickListener(this);
+        video = (ImageButton) findViewById(R.id.video);
+        video.setOnClickListener(this);
+        
+        pplBtn = (ImageButton) findViewById(R.id.pplBtn);
+        timeBtn = (ImageButton) findViewById(R.id.timeBtn);
+        difficultBtn = (ImageButton) findViewById(R.id.difficultBtn);
+        pplBtn.setOnClickListener(this);
+        timeBtn.setOnClickListener(this);
+        difficultBtn.setOnClickListener(this);
+                    
+        uploadStepOnePhoto = (ImageButton) findViewById(R.id.uploadStepOnePhoto);
+        uploadStepOnePhoto.setOnClickListener(this);
+        uploadStepTwoPhoto = (ImageButton) findViewById(R.id.uploadStepTwoPhoto);
+        uploadStepTwoPhoto.setOnClickListener(this);
         
         upload_button_register = (ImageButton)findViewById(R.id.upload_button_register);
         upload_button_register.setOnClickListener(this);
         
-        moveView = (LinearLayout) findViewById(R.id.moveView);
 	}
 	
 	@Override
@@ -87,133 +81,89 @@ public class UploadActivity extends ActionBarActivity implements OnScrollChanged
 		// TODO Auto-generated method stub
 		super.onWindowFocusChanged(hasFocus);
 		
-		actionbarHeight = uploadActionBar.getHeight();
-		moveView.scrollTo(0, -actionbarHeight);
-		//Log.d("upload", actionbarHeight);
-		//uploadActionBar.bringToFront();
+		if(!dialogFlag){
+			actionbarHeight = uploadActionBar.getHeight();
+			moveView.scrollTo(0, -actionbarHeight);
+		}
 	}
-	
-//	@Override
-//	public boolean onTouchEvent(MotionEvent event) {
-//		// TODO Auto-generated method stub
-//	
-//		if(ges.onTouchEvent(event))
-//		{	return true;
-//	}
-//		return super.onTouchEvent(event);
-//		
-//	}
-//
-//	class MyGes extends SimpleOnGestureListener{
-//		@Override
-//		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-//			// TODO Auto-generated method stub
-//			
-//			Log.e("upload", "test");
-//			return super.onFling(e1, e2, velocityX, velocityY);
-//		}
-//	}
+
 	
 	@Override
 	public void onScrollChanged() {
 		int scrollY = uploadScroll.getScrollY();  //for verticalScrollView
 		
-		if( (prevScrollY < scrollY) && scrollY >= actionbarHeight*2 ){	// 스크롤 다운
+		if((prevScrollY < scrollY) && scrollY >= actionbarHeight*2 ){	// 스크롤 다운
 			
-			moveView.scrollTo(0, 0);
-			
-		
-//	  		AlphaAnimation anim2 = new AlphaAnimation(1, 0);	// 실사에서 투명으로 alpha 값
-//	  		TranslateAnimation anim = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
-//	  				Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, -1);
-//	  		
-//	  		AnimationSet set = new AnimationSet(true);
-//	  		set.addAnimation(anim);
-//	  		set.addAnimation(anim2);
-//	  		set.setDuration(600);
-//	  		
-//	  		set.setAnimationListener(new AnimationListener() {
-//				@Override
-//				public void onAnimationStart(Animation animation) {
-//					// TODO Auto-generated method stub
-//				}
-//				
-//				@Override
-//				public void onAnimationRepeat(Animation animation) {
-//					// TODO Auto-generated method stub
-//				}
-//				
-//				@Override
-//				public void onAnimationEnd(Animation animation) {
-//					// TODO Auto-generated method stub
-//					uploadActionBar.setVisibility(View.GONE);
-//				}
-//			});
-//	  		
-//	  		//set.setFillAfter(true);
-//	  
-//	  		uploadActionBar.clearAnimation();
-//	  		uploadActionBar.startAnimation(set);
+			moveView.scrollTo(0, 0);			
 			scrollFlag = false;
-			
 		}
-		else if(   (prevScrollY > scrollY) && scrollY <= actionbarHeight/2  ){ 	// action bar 다시 생김.
-//			 
-//			Log.d("upload",String.valueOf(scrollY));
-//			
+		else if((prevScrollY > scrollY) && scrollY <= actionbarHeight/2 ){ 	// action bar 다시 생김.
+
 			if(!scrollFlag){
 				scrollFlag = true;
 				moveView.scrollTo(0, -actionbarHeight);
-				
 			}
-			
-//				bar.show();
-//			
-//			uploadActionBar.setVisibility(View.VISIBLE);
-//			
-//			AlphaAnimation anim2 = new AlphaAnimation(0, 1);
-//  		  	TranslateAnimation anim = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0,
-//  				  Animation.RELATIVE_TO_SELF, -1, Animation.RELATIVE_TO_SELF, 0);
-//  		  	    		 
-//	  		AnimationSet set = new AnimationSet(true);
-//	  		set.addAnimation(anim);		// 얘는 아래로 사라지게 하는 것
-//	  		set.addAnimation(anim2);	// 얘는 dim처럼 점차 사라지는 것
-//	  		set.setDuration(600);
-//
-//	  		uploadActionBar.clearAnimation();
-//	  		uploadActionBar.startAnimation(set);	
 		}
-//		
 		prevScrollY = scrollY;
-
 	}
+	
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		
 		switch(v.getId()){
-		case R.id.uploadStepPhoto:
-			// 다현이가 개발한 것을 경화가 임의로 위치 수정. 에러 발생시 체크
-			if(flag==false){
-				flag=true;
-				AlphaAnimation ani = new AlphaAnimation(0, 1);
-				ani.setDuration(500);
-				uploadStepPhoto.setImageDrawable(getResources().getDrawable(R.drawable.upload_step1_photo_change));
-				uploadStepPhoto.startAnimation(ani);
+		case R.id.actionBarBtn :
+			super.onBackPressed();
+			break;
+		case R.id.video :
+			if(videoFlag){
+				AlphaAnimation ani2 = new AlphaAnimation(0, 1);
+				ani2.setDuration(500);
+				ani2.setFillAfter(true);
+				video.setImageDrawable(getResources().getDrawable(R.drawable.upload_addphoto_real));
+				video.startAnimation(ani2);
+				videoFlag = false;
 			}
 			break;
-			
+		case R.id.pplBtn :
+			pplBtn.setImageDrawable(getResources().getDrawable(R.drawable.upload_ppl_two));
+			break;
+		case R.id.timeBtn :
+			timeBtn.setImageDrawable(getResources().getDrawable(R.drawable.upload_time_thirty));
+			break;
+		case R.id.difficultBtn :
+			difficultBtn.setImageDrawable(getResources().getDrawable(R.drawable.upload_difficulty_normal));
+			break;
+		case R.id.uploadStepOnePhoto :	
+			if(stepOneFlag){
+				AlphaAnimation ani = new AlphaAnimation(0, 1);
+				ani.setDuration(500);
+				ani.setFillAfter(true);
+				uploadStepOnePhoto.setImageDrawable(getResources().getDrawable(R.drawable.upload_step1_photo_change));
+				uploadStepOnePhoto.startAnimation(ani);
+				stepOneFlag = false;
+			}
+			break;
+		case R.id.uploadStepTwoPhoto :	
+			if(stepTwoFlag){
+				AlphaAnimation ani3 = new AlphaAnimation(0, 1);
+				ani3.setDuration(500);
+				ani3.setFillAfter(true);
+				uploadStepTwoPhoto.setImageDrawable(getResources().getDrawable(R.drawable.upload_step_two_photo));
+				uploadStepTwoPhoto.startAnimation(ani3);
+				stepTwoFlag = false;
+			}			
+			break;
+		
 		case R.id.upload_button_register:
+			dialogFlag = true;
 			customDialog = new CustomDialog(UploadActivity.this,"upload");
 			customDialog.show();
 			break;
-			
 		default:
 			break;
 		}
 		
-		
 	}
 
-	
 }

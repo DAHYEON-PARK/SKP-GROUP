@@ -29,13 +29,9 @@ public class MainActivity extends ActionBarActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().hide(); 
 		
-		// Fragments
 		firstPage =  new FirstPage().newInstance();
 		getSupportFragmentManager().beginTransaction().replace(R.id.fl_activity_main, firstPage).commit();
 		
-		// Navigation drawer : menu lists
-		
-		// Navigation drawer : ActionBar Toggle
 		dlDrawer = (DrawerLayout) findViewById(R.id.dl_activity_main);
 		dtToggle = new ActionBarDrawerToggle(this, dlDrawer, R.drawable.ic_drawer,0, 0);
 	}

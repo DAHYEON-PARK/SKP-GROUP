@@ -109,8 +109,6 @@ public class SpecialActivity extends ActionBarActivity implements OnClickListene
 				break;					
 		}
 		
-		
 	}
 
-	
 }

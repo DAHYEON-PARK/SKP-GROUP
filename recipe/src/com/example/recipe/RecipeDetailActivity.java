@@ -1,6 +1,5 @@
 package com.example.recipe;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -33,8 +32,7 @@ public class RecipeDetailActivity extends ActionBarActivity {
         
 		viewPager = (ViewPager) findViewById(R.id.viewPager);
 		//viewPager.setOffscreenPageLimit(3);
-		
-		
+				
 		button_cancel.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
